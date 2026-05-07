@@ -1,0 +1,19 @@
+services:
+  backend:
+    container_name: backend
+    build: .
+    ports:
+      - "3001:3001"
+    environment:
+      DB_HOST: db
+      DB_USER: root
+      DB_PASSWORD: admin123
+      DB_NAME: tienda_perritos
+      DB_PORT: "3306"
+    networks:
+      - tienda-net
+    restart: unless-stopped
+
+networks:
+  tienda-net:
+    external: true
